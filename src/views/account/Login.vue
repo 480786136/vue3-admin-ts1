@@ -24,16 +24,19 @@
     <a href="" class="color-white">注册</a >
   </div>
     </div>
-
   </div>
 </template>
 
 <script lang="ts">
 import "./captcha.js";
-import {onMounted, reactive,defineComponent} from "vue";
+import {onMounted, reactive,defineComponent,ref} from "vue";
 export default defineComponent({
   name: 'Login',
   setup(props){
+
+const count=ref<string>("10");//强类型
+console.log(count.value)
+
 const Fromconfig=reactive({
   layout :{
       labelCol: { span: 4 },
