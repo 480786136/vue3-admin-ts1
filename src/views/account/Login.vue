@@ -20,8 +20,9 @@
     </a-form-item>
   </a-form>
   <div class="fs-12 text-center">
-    <a href="" class="color-white">忘记密码</a >|
+    <a href="" class="color-white" >忘记密码</a >|
     <a href="" class="color-white">注册</a >
+    {{count}}
   </div>
     </div>
   </div>
@@ -29,7 +30,7 @@
 
 <script lang="ts">
 import "./captcha.js";
-import {onMounted, reactive,defineComponent,ref} from "vue";
+import {onMounted, reactive,defineComponent,ref,toRefs} from "vue";
 export default defineComponent({
   name: 'Login',
   setup(props){
@@ -37,14 +38,19 @@ export default defineComponent({
 const count=ref<string>("10");//强类型
 console.log(count.value)
 
-const Fromconfig=reactive({
+const Fromconfig=reactive<any>({
   layout :{
       labelCol: { span: 4 },
       wrapperCol: { span: 14 },
-    }
+    },
+    aa:10,
+    bb:20
 })
+
+const data=toRefs (Fromconfig);
 return{
-  Fromconfig
+  ...data,
+  count
 }
   }
 })
